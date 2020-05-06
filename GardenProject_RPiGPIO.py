@@ -1,7 +1,7 @@
 '''
 Author: Jacob Gero, Original finished 26 April 2020
 RPi GPIO "extention": Finished 30 April 2020
-Testing Completed: 04 May 2020
+Testing Completed: 06 May 2020
 
 This code imports data from arduino code, which simultaneously collects
 data from five DHT-11 (temperature and humidity sensors) and five YL-69 (soil moisture sensors).
@@ -900,7 +900,8 @@ def helpfulPlanner():
                                     print("Recommended temperature for ",data1[0]," is over ",TempMin1," C (",TempMinF1," F) and under ",TempMax1," C (", TempMaxF1,") F")
                                     GPIO.output(12, True)
                                     print("")
-                        except TypeError:
+                        except TypeError: #This added as a null value, if the user selects option 7, would cause the system to error.
+                                          #future work includes creating a system that won't track data at all if nothing is planted at a station.
                                 print("You have planted nothing at station 1.")
                         try:      
                             if data[3] < HumMin2:
