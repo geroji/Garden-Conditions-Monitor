@@ -1,6 +1,7 @@
 '''
 Author: Jacob Gero, Original finished 26 April 2020
-RPi GPIO extention: Finished 30 April 2020
+RPi GPIO "extention": Finished 30 April 2020
+Testing Completed: 04 May 2020
 
 This code imports data from arduino code, which simultaneously collects
 data from five DHT-11 (temperature and humidity sensors) and five YL-69 (soil moisture sensors).
