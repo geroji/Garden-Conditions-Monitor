@@ -1,10 +1,18 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu May  7 23:14:31 2020
+
+@author: geroj
+"""
+
 '''
 Author: Jacob Gero, Original finished 26 April 2020
 RPi GPIO extention: Finished 30 April 2020
+Testing: Finished 7 May 2020
 
 This code imports data from arduino code, which simultaneously collects
 data from five DHT-11 (temperature and humidity sensors) and five YL-69 (soil moisture sensors).
-The Arduino code writes to the serial moniter, which this code reads and interprets. 
+The Arduino code writes to the serial monitor, which this code reads and interprets. 
 The user has to choose between growing peas, 
 beans, squash, corn, tomatoes, or has the option of growing his/her own input of crop. The program
 will tell the user if any of the modules 
@@ -14,7 +22,7 @@ is too high or low, or if the soil is too dry or wet. This code DOES NOT run fro
 two arduinos, unless the RPi.GPIO library is installed for some reason. Comment out the RPi library and any GPIO mentions 
 within the program and the program should run fine and interpret/plot data from your laptop.
 
-Feel free to add or subtract from this code to make it cooler or less crazy.
+Known bugs: Not that I am aware of, though I won't promise there aren't any.
 '''
 import RPi.GPIO as GPIO #For LED signals
 import sys #Used for sys.exit()
@@ -108,7 +116,7 @@ Author: Jacob Gero
 This module runs in a similar fashion to the single planner modules, 
 in that it reads the Arduino inputs and segregates the data into temperature,
 humidity, and soil moisture arrays and interprets it and plots it on a graph over
-a certain period of minutes, which the user inputs. However, in this module, the user
+a certain period of minutes, which the user inputs. Howevertthis module, the user
 decides what he/she is planting for each station, and thus the parameters are different for
 each station.
 
@@ -152,10 +160,10 @@ def helpfulPlanner():
         V1 = input("")
         data1.append(V1)
         try:
-            print("What is the minimum accepted temperature, in Celcius?")
+            print("What is the minimum accepted temperature in celsius?")
             TempMin1 = float(input(""))
             TempMinF1 = TempMin1*(9/5)+32
-            print("What is the maximum accepted temperature, in Celcius?")
+            print("What is the maximum accepted temperature in celsius?")
             TempMax1 = float(input(""))
             TempMaxF1 = TempMax1*(9/5)+32
             print("What is the minimum accepted humidity? Recommended for most plants is 40%.")
@@ -198,10 +206,10 @@ def helpfulPlanner():
         V2 = input("")
         data1.append(V2)
         try:
-            print("What is the minimum accepted temperature, in Celcius?")
+            print("What is the minimum accepted temperature in celsius?")
             TempMin2 = float(input(""))
             TempMinF2 = TempMin2*(9/5)+32
-            print("What is the maximum accepted temperature, in Celcius?")
+            print("What is the maximum accepted temperature in celsius?")
             TempMax2 = float(input(""))
             TempMaxF2 = TempMax2*(9/5)+32
             print("What is the minimum accepted humidity? Recommended for most plants is 40%.")
@@ -243,10 +251,10 @@ def helpfulPlanner():
         print("What vegetable will you grow instead?")
         V3 = input("")
         try:
-            print("What is the minimum accepted temperature, in Celcius?")
+            print("What is the minimum accepted temperature in celsius?")
             TempMin3 = float(input(""))
             TempMinF3 = TempMin3*(9/5)+32
-            print("What is the maximum accepted temperature, in Celcius?")
+            print("What is the maximum accepted temperature in celsius?")
             TempMax3 = float(input(""))
             TempMaxF3 = TempMax3*(9/5)+32
             print("What is the minimum accepted humidity? Recommended for most plants is 40%.")
@@ -289,10 +297,10 @@ def helpfulPlanner():
         print("What vegetable will you grow instead?")
         V4 = input("")
         try:
-            print("What is the minimum accepted temperature, in Celcius?")
+            print("What is the minimum accepted temperature in celsius?")
             TempMin4 = float(input(""))
             TempMinF4 = TempMin4*(9/5)+32
-            print("What is the maximum accepted temperature, in Celcius?")
+            print("What is the maximum accepted temperature in celsius?")
             TempMax4 = float(input(""))
             TempMaxF4 = TempMax4*(9/5)+32
             print("What is the minimum accepted humidity? Recommended for most plants is 40%.")
@@ -335,10 +343,10 @@ def helpfulPlanner():
         print("What vegetable will you grow instead?")
         V5 = input("")
         try:
-            print("What is the minimum accepted temperature, in Celcius?")
+            print("What is the minimum accepted temperature in celsius?")
             TempMin5 = float(input(""))
             TempMinF5 = TempMin5*(9/5)+32
-            print("What is the maximum accepted temperature, in Celcius?")
+            print("What is the maximum accepted temperature in celsius?")
             TempMax5 = float(input(""))
             TempMaxF5 = TempMax5*(9/5)+32
             print("What is the minimum accepted humidity? Recommended for most plants is 40%.")
@@ -367,7 +375,7 @@ def helpfulPlanner():
     elif g in ['r']:
         helpfulPlanner()
     else:
-        print("Continuing with monitering your garden!")
+        print("Continuing with monitoring your garden!")
         
         
     if data1[0] in ['Tomatoes']:
@@ -787,7 +795,7 @@ def helpfulPlanner():
                         if HumMin3 == None:
                             print("")
                         else:
-                            print("current tempearature(C), station 3: ", data[7])
+                            print("current temperature(C), station 3: ", data[7])
                             tempC3.append(data[7])
                     if i == 8:
                         if HumMin3 == None:
@@ -832,7 +840,7 @@ def helpfulPlanner():
                         if HumMin4 == None:
                             print("")
                         else:
-                            print("current tempearature(C), station 4: ", data[10])
+                            print("current temperature(C), station 4: ", data[10])
                             tempC4.append(data[10]) 
                     if i == 11:
                         if HumMin4 == None:
@@ -877,7 +885,7 @@ def helpfulPlanner():
                         if HumMin5 == None:
                             print("")
                         else:
-                            print("current tempearature(C), station 5: ", data[13])
+                            print("current temperature(C), station 5: ", data[13])
                             tempC5.append(data[13])
                     if i == 14:
                         if HumMin5 == None:
@@ -901,7 +909,7 @@ def helpfulPlanner():
                         print("current humidity, average: ", data[15])
                         humidav.append(data[15])
                     if i == 16:
-                        print("current tempearature(C), average: ", data[16])
+                        print("current temperature(C), average: ", data[16])
                         tempCav.append(data[16])
                     if i == 17:
                         print("current temperature(F), average: ", data[17])
@@ -1161,7 +1169,7 @@ def readArduinoPea():
                 p += 1
             
             i = 0
-            print("Iterartion ", count, " out of ",user)
+            print("Iteration ", count, " out of ",user)
                         #This resets all LEDs that are possibly used for every iteration of i.
             #This is important, as LEDs will otherwise remain on if turned on before for the 
             #duration of running the program, thus leading to unreliable use.
@@ -1304,7 +1312,7 @@ def readArduinoPea():
                         print("current humidity, station 3: ", data[6])
                         humid3.append(data[6])
                     if i == 7:
-                        print("current tempearature(C), station 3: ", data[7])
+                        print("current temperature(C), station 3: ", data[7])
                         tempC3.append(data[7])
                     if i == 8:
                         print("current temperature(F), station 3: ", data[8])
@@ -1340,7 +1348,7 @@ def readArduinoPea():
                         print("current humidity, station 4: ", data[9])
                         humid4.append(data[9])
                     if i == 10:
-                        print("current tempearature(C), station 4: ", data[10])
+                        print("current temperature(C), station 4: ", data[10])
                         tempC4.append(data[10]) 
                     if i == 11:
                         print("current temperature(F), station 4: ", data[11])
@@ -1376,7 +1384,7 @@ def readArduinoPea():
                         print("current humidity, station 5: ", data[12])
                         humid5.append(data[12])
                     if i == 13:
-                        print("current tempearature(C), station 5: ", data[13])
+                        print("current temperature(C), station 5: ", data[13])
                         tempC5.append(data[13])
                     if i == 14:
                         print("current temperature(F), station 5: ", data[14])
@@ -1396,7 +1404,7 @@ def readArduinoPea():
                         print("current humidity, average: ", data[15])
                         humidav.append(data[15])
                     if i == 16:
-                        print("current tempearature(C), average: ", data[16])
+                        print("current temperature(C), average: ", data[16])
                         tempCav.append(data[16])
                     if i == 17:
                         print("current temperature(F), average: ", data[17])
@@ -1661,7 +1669,7 @@ def readArduinoBean():
             if GPIO.input(23):
                 GPIO.output(23, False)
             i = 0
-            print("Iterartion ", count, " out of ",user)
+            print("Iteration ", count, " out of ",user)
             while i <= 17:
                     
                     if i == 0:
@@ -1757,7 +1765,7 @@ def readArduinoBean():
                         print("current humidity, station 3: ", data[6])
                         humid3.append(data[6])
                     if i == 7:
-                        print("current tempearature(C), station 3: ", data[7])
+                        print("current temperature(C), station 3: ", data[7])
                         tempC3.append(data[7])
                     if i == 8:
                         print("current temperature(F), station 3: ", data[8])
@@ -1793,7 +1801,7 @@ def readArduinoBean():
                         print("current humidity, station 4: ", data[9])
                         humid4.append(data[9])
                     if i == 10:
-                        print("current tempearature(C), station 4: ", data[10])
+                        print("current temperature(C), station 4: ", data[10])
                         tempC4.append(data[10]) 
                     if i == 11:
                         print("current temperature(F), station 4: ", data[11])
@@ -1829,7 +1837,7 @@ def readArduinoBean():
                         print("current humidity, station 5: ", data[12])
                         humid5.append(data[12])
                     if i == 13:
-                        print("current tempearature(C), station 5: ", data[13])
+                        print("current temperature(C), station 5: ", data[13])
                         tempC5.append(data[13])
                     if i == 14:
                         print("current temperature(F), station 5: ", data[14])
@@ -1849,7 +1857,7 @@ def readArduinoBean():
                         print("current humidity, average: ", data[15])
                         humidav.append(data[15])
                     if i == 16:
-                        print("current tempearature(C), average: ", data[16])
+                        print("current temperature(C), average: ", data[16])
                         tempCav.append(data[16])
                     if i == 17:
                         print("current temperature(F), average: ", data[17])
@@ -2110,7 +2118,7 @@ def readArduinoSquash():
                 GPIO.output(23, False)
             
             i = 0
-            print("Iterartion ", count, " out of ",user)
+            print("Iteration ", count, " out of ",user)
 
             while i <= 17:
  
@@ -2205,7 +2213,7 @@ def readArduinoSquash():
                         print("current humidity, station 3: ", data[6])
                         humid3.append(data[6])
                     if i == 7:
-                        print("current tempearature(C), station 3: ", data[7])
+                        print("current temperature(C), station 3: ", data[7])
                         tempC3.append(data[7])
                     if i == 8:
                         print("current temperature(F), station 3: ", data[8])
@@ -2241,7 +2249,7 @@ def readArduinoSquash():
                         print("current humidity, station 4: ", data[9])
                         humid4.append(data[9])
                     if i == 10:
-                        print("current tempearature(C), station 4: ", data[10])
+                        print("current temperature(C), station 4: ", data[10])
                         tempC4.append(data[10]) 
                     if i == 11:
                         print("current temperature(F), station 4: ", data[11])
@@ -2277,7 +2285,7 @@ def readArduinoSquash():
                         print("current humidity, station 5: ", data[12])
                         humid5.append(data[12])
                     if i == 13:
-                        print("current tempearature(C), station 5: ", data[13])
+                        print("current temperature(C), station 5: ", data[13])
                         tempC5.append(data[13])
                     if i == 14:
                         print("current temperature(F), station 5: ", data[14])
@@ -2297,7 +2305,7 @@ def readArduinoSquash():
                         print("current humidity, average: ", data[15])
                         humidav.append(data[15])
                     if i == 16:
-                        print("current tempearature(C), average: ", data[16])
+                        print("current temperature(C), average: ", data[16])
                         tempCav.append(data[16])
                     if i == 17:
                         print("current temperature(F), average: ", data[17])
@@ -2561,7 +2569,7 @@ def readArduinoTomato():
                 GPIO.output(4, False)
             
             i = 0
-            print("Iterartion ", count, " out of ",user)
+            print("Iteration ", count, " out of ",user)
             while i <= 17:
                     
                     if i == 0:
@@ -2657,7 +2665,7 @@ def readArduinoTomato():
                         print("current humidity, station 3: ", data[6])
                         humid3.append(data[6])
                     if i == 7:
-                        print("current tempearature(C), station 3: ", data[7])
+                        print("current temperature(C), station 3: ", data[7])
                         tempC3.append(data[7])
                     if i == 8:
                         print("current temperature(F), station 3: ", data[8])
@@ -2693,7 +2701,7 @@ def readArduinoTomato():
                         print("current humidity, station 4: ", data[9])
                         humid4.append(data[9])
                     if i == 10:
-                        print("current tempearature(C), station 4: ", data[10])
+                        print("current temperature(C), station 4: ", data[10])
                         tempC4.append(data[10]) 
                     if i == 11:
                         print("current temperature(F), station 4: ", data[11])
@@ -2729,7 +2737,7 @@ def readArduinoTomato():
                         print("current humidity, station 5: ", data[12])
                         humid5.append(data[12])
                     if i == 13:
-                        print("current tempearature(C), station 5: ", data[13])
+                        print("current temperature(C), station 5: ", data[13])
                         tempC5.append(data[13])
                     if i == 14:
                         print("current temperature(F), station 5: ", data[14])
@@ -2749,7 +2757,7 @@ def readArduinoTomato():
                         print("current humidity, average: ", data[15])
                         humidav.append(data[15])
                     if i == 16:
-                        print("current tempearature(C), average: ", data[16])
+                        print("current temperature(C), average: ", data[16])
                         tempCav.append(data[16])
                     if i == 17:
                         print("current temperature(F), average: ", data[17])
@@ -3007,7 +3015,7 @@ def readArduinoCorn():
             if GPIO.input(23):
                 GPIO.output(23, False)
             i = 0
-            print("Iterartion ", count, " out of ",user)
+            print("Iteration ", count, " out of ",user)
             while i <= 17:
                     
                     if i == 0:
@@ -3104,7 +3112,7 @@ def readArduinoCorn():
                         print("current humidity, station 3: ", data[6])
                         humid3.append(data[6])
                     if i == 7:
-                        print("current tempearature(C), station 3: ", data[7])
+                        print("current temperature(C), station 3: ", data[7])
                         tempC3.append(data[7])
                     if i == 8:
                         print("current temperature(F), station 3: ", data[8])
@@ -3139,7 +3147,7 @@ def readArduinoCorn():
                         print("current humidity, station 4: ", data[9])
                         humid4.append(data[9])
                     if i == 10:
-                        print("current tempearature(C), station 4: ", data[10])
+                        print("current temperature(C), station 4: ", data[10])
                         tempC4.append(data[10]) 
                     if i == 11:
                         print("current temperature(F), station 4: ", data[11])
@@ -3175,7 +3183,7 @@ def readArduinoCorn():
                         print("current humidity, station 5: ", data[12])
                         humid5.append(data[12])
                     if i == 13:
-                        print("current tempearature(C), station 5: ", data[13])
+                        print("current temperature(C), station 5: ", data[13])
                         tempC5.append(data[13])
                     if i == 14:
                         print("current temperature(F), station 5: ", data[14])
@@ -3195,7 +3203,7 @@ def readArduinoCorn():
                         print("current humidity, average: ", data[15])
                         humidav.append(data[15])
                     if i == 16:
-                        print("current tempearature(C), average: ", data[16])
+                        print("current temperature(C), average: ", data[16])
                         tempCav.append(data[16])
                     if i == 17:
                         print("current temperature(F), average: ", data[17])
@@ -3382,10 +3390,10 @@ def readArduinoOther():
     try:
         print("What are you planting here?")
         plant = input("")
-        print("What is the minimum accepted temperature, in Celcius?")
+        print("What is the minimum accepted temperature in celsius?")
         ThMin = float(input(""))
         ThMinF = ThMin*(9/5)+32
-        print("What is the maximum accepted temperature, in Celcius?")
+        print("What is the maximum accepted temperature in celsius?")
         ThMax = float(input(""))
         ThMaxF = ThMax*(9/5)+32
         print("What is the minimum accepted humidity? Recommended for most plants is 40%.")
@@ -3560,7 +3568,7 @@ def readArduinoOther():
                     print("current humidity, station 3: ", data[6])
                     humid3.append(data[6])
                 if i == 7:
-                    print("current tempearature(C), station 3: ", data[7])
+                    print("current temperature(C), station 3: ", data[7])
                     tempC3.append(data[7])
                 if i == 8:
                     print("current temperature(F), station 3: ", data[8])
@@ -3597,7 +3605,7 @@ def readArduinoOther():
                     print("current humidity, station 4: ", data[9])
                     humid4.append(data[9])
                 if i == 10:
-                    print("current tempearature(C), station 4: ", data[10])
+                    print("current temperature(C), station 4: ", data[10])
                     tempC4.append(data[10]) 
                 if i == 11:
                     print("current temperature(F), station 4: ", data[11])
@@ -3632,7 +3640,7 @@ def readArduinoOther():
                     print("current humidity, station 5: ", data[12])
                     humid5.append(data[12])
                 if i == 13:
-                    print("current tempearature(C), station 5: ", data[13])
+                    print("current temperature(C), station 5: ", data[13])
                     tempC5.append(data[13])
                 if i == 14:
                     print("current temperature(F), station 5: ", data[14])
@@ -3652,7 +3660,7 @@ def readArduinoOther():
                     print("current humidity, average: ", data[15])
                     humidav.append(data[15])
                 if i == 16:
-                    print("current tempearature(C), average: ", data[16])
+                    print("current temperature(C), average: ", data[16])
                     tempCav.append(data[16])
                 if i == 17:
                     print("current temperature(F), average: ", data[17])
