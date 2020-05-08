@@ -1,7 +1,6 @@
 '''
 Author: Jacob Gero, Original finished 26 April 2020
-RPi GPIO "extention": Finished 30 April 2020
-Testing Completed: 06 May 2020
+RPi GPIO extention: Finished 30 April 2020
 
 This code imports data from arduino code, which simultaneously collects
 data from five DHT-11 (temperature and humidity sensors) and five YL-69 (soil moisture sensors).
@@ -88,13 +87,15 @@ the user
 def q():
     print("Would you like to run again? y/n")
     yn = input("")
+    arduino.close()
+    arduino2.close()
     if yn in ['y','yes','Yes','y']:
+        arduino.open()
+        arduino2.open()
         main()
     if yn in ['no','n','N','No']:
         print("Thank you!")
         time.sleep(2)
-        arduino.close()
-        arduino2.close()
         sys.exit()
     else:
         print("Not a valid response.")
@@ -610,12 +611,11 @@ def helpfulPlanner():
         tempCav = []
         
         
-        
         count = 0
         
         while count < user + 1:
             print("--------------------------------------------------------------------------------") 
-            print("Iterartion ", count, " out of ",user)
+            print("Iteration ", count, " out of ",user)
             
             data = []
             for y in range(0,18): 
@@ -671,187 +671,233 @@ def helpfulPlanner():
             
             while i <= 17:
                     
-                    if i == 0:    
-                        print("Station 1 soil moisture levels: ")
-                        if data2[0] < 200:
-                            print("Soil is saturated. Do not water and ensure proper drainage.")
-                            GPIO.output(21, True)
-                        if data2[0] > 200 and data2[0] < 400:
-                            print("Soil is moist. ")
-                            GPIO.output(21, True)
-                        if data2[0] > 400 and data2[0] < 700:
-                            print("Soil is well watered!")
-                        if data2[0] > 700 and data2[0] < 900:
-                            print("Soil is dry. Water your plants.")
-                            GPIO.output(20, True)
-                        if data2[0] > 900:
-                            print("Your plants are under stress due to lack of water.")
-                            print("Please water your plants immediatedly.")
-                            GPIO.output(20, True)
-                        print("current humidity, station 1: ",data[0])
-                        humid1.append(data[0])
+                    if i == 0:
+                        if HumMin1 == None:
+                            print("You have planted nothing in station 1.")
+                        else:
+                            print("Station 1 soil moisture levels: ")
+                            if data2[0] < 200:
+                                print("Soil is saturated. Do not water and ensure proper drainage.")
+                                GPIO.output(21, True)
+                            if data2[0] > 200 and data2[0] < 400:
+                                print("Soil is moist. ")
+                                GPIO.output(21, True)
+                            if data2[0] > 400 and data2[0] < 700:
+                                print("Soil is well watered!")
+                            if data2[0] > 700 and data2[0] < 900:
+                                print("Soil is dry. Water your plants.")
+                                GPIO.output(20, True)
+                            if data2[0] > 900:
+                                print("Your plants are under stress due to lack of water.")
+                                print("Please water your plants immediatedly.")
+                                GPIO.output(20, True)
+                            print("current humidity, station 1: ",data[0])
+                            humid1.append(data[0])
                     if i == 1:
-                        print("current temperature(C), station 1: ",data[1])
-                        tempC1.append(data[1])
+                        if HumMin1 == None:
+                            print("")
+                        else:
+                            print("current temperature(C), station 1: ",data[1])
+                            tempC1.append(data[1])
                     if i == 2:
-                        print("current temperature(F), station 1: ",data[2])
-                        tempF1.append(data[2])
-                        fig,axs = plt.subplots(3)
-                        fig.suptitle('Station 1 Humidity and Temperature')
-                        axs[0].plot(humid1)
-                        axs[0].set_ylabel('humidity(%)')
-                        axs[1].plot(tempC1)
-                        axs[1].set_ylabel('Temp(C)')
-                        axs[2].plot(tempF1)
-                        axs[2].set_ylabel('Temp(F)')
-                        axs[2].set_xlabel('Time Passed (Minutes)')
-                        plt.show()
+                        if HumMin1 == None:
+                            print("")
+                        else:
+                            print("current temperature(F), station 1: ",data[2])
+                            tempF1.append(data[2])
+                            fig,axs = plt.subplots(3)
+                            fig.suptitle('Station 1 Humidity and Temperature')
+                            axs[0].plot(humid1)
+                            axs[0].set_ylabel('humidity(%)')
+                            axs[1].plot(tempC1)
+                            axs[1].set_ylabel('Temp(C)')
+                            axs[2].plot(tempF1)
+                            axs[2].set_ylabel('Temp(F)')
+                            axs[2].set_xlabel('Time Passed (Minutes)')
+                            plt.show()
       
                     if i == 3:
-                        print("Station 2 soil moisture levels: ")
-                        if data2[1] < 200:
-                            print("Soil is saturated. Do not water and ensure proper drainage.")
-                            GPIO.output(19, True)
-                        elif data2[1] > 200 and data2[1] < 400:
-                            print("Soil is moist. ")
-                            GPIO.output(19, True)
-                        elif data2[1] > 400 and data2[1] < 700:
-                            print("Soil is well watered!")
-                        elif data2[1] > 700 and data2[1] < 900:
-                            print("Soil is dry. Water your plants.")
-                            GPIO.output(11, True)
-                        elif data2[1] > 900:
-                            print("Your plants are under stress due to lack of water.")
-                            print("Please water your plants immediatedly.")
-                            GPIO.output(11, True)
-                        print("current humidity, station 2: ", data[3])
-                        humid2.append(data[3])
+                        if HumMin2 == None:
+                            print("You have planted nothing at Station 2.")
+                        else:
+                            print("Station 2 soil moisture levels: ")
+                            if data2[1] < 200:
+                                print("Soil is saturated. Do not water and ensure proper drainage.")
+                                GPIO.output(19, True)
+                            elif data2[1] > 200 and data2[1] < 400:
+                                print("Soil is moist. ")
+                                GPIO.output(19, True)
+                            elif data2[1] > 400 and data2[1] < 700:
+                                print("Soil is well watered!")
+                            elif data2[1] > 700 and data2[1] < 900:
+                                print("Soil is dry. Water your plants.")
+                                GPIO.output(11, True)
+                            elif data2[1] > 900:
+                                print("Your plants are under stress due to lack of water.")
+                                print("Please water your plants immediatedly.")
+                                GPIO.output(11, True)
+                            print("current humidity, station 2: ", data[3])
+                            humid2.append(data[3])
                     if i == 4:
-                        print("current temperature(C), station 2: ", data[4])
-                        tempC2.append(data[4])
+                        if HumMin2 == None:
+                            print("")
+                        else:
+                            print("current temperature(C), station 2: ", data[4])
+                            tempC2.append(data[4])
                     if i == 5:
-                        print("current temperature(F), station 2: ", data[5])
-                        tempF2.append(data[5])
-                        print("")
-                        fig,axs = plt.subplots(3)
-                        fig.suptitle('Station 2 Humidity and Temperature')
-                        axs[0].plot(humid2)
-                        axs[0].set_ylabel('humidity(%)')
-                        axs[1].plot(tempC2)
-                        axs[1].set_ylabel('Temp(C)')
-                        axs[2].plot(tempF2)
-                        axs[2].set_ylabel('Temp(F)')
-                        axs[2].set_xlabel('Time Passed (Minutes)')
-                        plt.show()
+                        if HumMin2 == None:
+                            print("")
+                        else:
+                            print("current temperature(F), station 2: ", data[5])
+                            tempF2.append(data[5])
+                            print("")
+                            fig,axs = plt.subplots(3)
+                            fig.suptitle('Station 2 Humidity and Temperature')
+                            axs[0].plot(humid2)
+                            axs[0].set_ylabel('humidity(%)')
+                            axs[1].plot(tempC2)
+                            axs[1].set_ylabel('Temp(C)')
+                            axs[2].plot(tempF2)
+                            axs[2].set_ylabel('Temp(F)')
+                            axs[2].set_xlabel('Time Passed (Minutes)')
+                            plt.show()
                     if i == 6:
-                        print("Station 3 soil moisture levels: ")
-                        if data2[2] < 200:
-                            print("Soil is saturated. Do not water and ensure proper drainage.")
-                            GPIO.output(9, True)
-                        elif data2[2] > 200 and data2[2] < 400:
-                            print("Soil is moist. ")
-                            GPIO.output(9, True)
-                        elif data2[2] > 400 and data2[2] < 700:
-                            print("Soil is well watered!")
-                        elif data2[2] > 700 and data2[2] < 900:
-                            print("Soil is dry. Water your plants.")
-                            GPIO.output(10, True)
-                        elif data2[2] > 900:
-                            print("Your plants are under stress due to lack of water.")
-                            print("Please water your plants immediatedly.")
-                            GPIO.output(10, True)
-                        print("current humidity, station 3: ", data[6])
-                        humid3.append(data[6])
+                        if HumMin3 == None:
+                            print("You have planted nothing in station 3.")
+                        else:
+                            print("Station 3 soil moisture levels: ")
+                            if data2[2] < 200:
+                                print("Soil is saturated. Do not water and ensure proper drainage.")
+                                GPIO.output(9, True)
+                            elif data2[2] > 200 and data2[2] < 400:
+                                print("Soil is moist. ")
+                                GPIO.output(9, True)
+                            elif data2[2] > 400 and data2[2] < 700:
+                                print("Soil is well watered!")
+                            elif data2[2] > 700 and data2[2] < 900:
+                                print("Soil is dry. Water your plants.")
+                                GPIO.output(10, True)
+                            elif data2[2] > 900:
+                                print("Your plants are under stress due to lack of water.")
+                                print("Please water your plants immediatedly.")
+                                GPIO.output(10, True)
+                            print("current humidity, station 3: ", data[6])
+                            humid3.append(data[6])
                     if i == 7:
-                        print("current tempearature(C), station 3: ", data[7])
-                        tempC3.append(data[7])
+                        if HumMin3 == None:
+                            print("")
+                        else:
+                            print("current tempearature(C), station 3: ", data[7])
+                            tempC3.append(data[7])
                     if i == 8:
-                        print("current temperature(F), station 3: ", data[8])
-                        tempF3.append(data[8])
-                        print("")
-                        fig,axs = plt.subplots(3)
-                        fig.suptitle('Station 3 Humidity and Temperature')
-                        axs[0].plot(humid3)
-                        axs[0].set_ylabel('humidity(%)')
-                        axs[1].plot(tempC3)
-                        axs[1].set_ylabel('Temp(C)')
-                        axs[2].plot(tempF3)
-                        axs[2].set_ylabel('Temp(F)')
-                        axs[2].set_xlabel('Time Passed (Minutes)')
-                        plt.show()
+                        if HumMin3 == None:
+                            print("")
+                        else:
+                            print("current temperature(F), station 3: ", data[8])
+                            tempF3.append(data[8])
+                            print("")
+                            fig,axs = plt.subplots(3)
+                            fig.suptitle('Station 3 Humidity and Temperature')
+                            axs[0].plot(humid3)
+                            axs[0].set_ylabel('humidity(%)')
+                            axs[1].plot(tempC3)
+                            axs[1].set_ylabel('Temp(C)')
+                            axs[2].plot(tempF3)
+                            axs[2].set_ylabel('Temp(F)')
+                            axs[2].set_xlabel('Time Passed (Minutes)')
+                            plt.show()
                     if i == 9:
-                        print("Station 4 soil moisture levels: ")
-                        if data2[3] < 200:
-                            print("Soil is saturated. Do not water and ensure proper drainage.")
-                            GPIO.output(7, True)
-                        elif data2[3] > 200 and data2[3] < 400:
-                            print("Soil is moist. ")
-                            GPIO.output(7, True)
-                        elif data2[3] > 400 and data2[3] < 700:
-                            print("Soil is well watered!")
-                        elif data2[3] > 700 and data2[3] < 900:
-                            print("Soil is dry. Water your plants.")
-                            GPIO.output(8, True)
-                        elif data2[3] > 900:
-                            print("Your plants are under stress due to lack of water.")
-                            print("Please water your plants immediatedly.")
-                            GPIO.output(8, True)
-                        print("current humidity, station 4: ", data[9])
-                        humid4.append(data[9])
+                        if HumMin4 == None:
+                            print("You have planted nothing in station 4.")
+                        else:
+                            print("Station 4 soil moisture levels: ")
+                            if data2[3] < 200:
+                                print("Soil is saturated. Do not water and ensure proper drainage.")
+                                GPIO.output(7, True)
+                            elif data2[3] > 200 and data2[3] < 400:
+                                print("Soil is moist. ")
+                                GPIO.output(7, True)
+                            elif data2[3] > 400 and data2[3] < 700:
+                                print("Soil is well watered!")
+                            elif data2[3] > 700 and data2[3] < 900:
+                                print("Soil is dry. Water your plants.")
+                                GPIO.output(8, True)
+                            elif data2[3] > 900:
+                                print("Your plants are under stress due to lack of water.")
+                                print("Please water your plants immediatedly.")
+                                GPIO.output(8, True)
+                            print("current humidity, station 4: ", data[9])
+                            humid4.append(data[9])
                     if i == 10:
-                        print("current tempearature(C), station 4: ", data[10])
-                        tempC4.append(data[10]) 
+                        if HumMin4 == None:
+                            print("")
+                        else:
+                            print("current tempearature(C), station 4: ", data[10])
+                            tempC4.append(data[10]) 
                     if i == 11:
-                        print("current temperature(F), station 4: ", data[11])
-                        tempF4.append(data[11])
-                        print("")
-                        fig,axs = plt.subplots(3)
-                        fig.suptitle('Station 4 Humidity and Temperature')
-                        axs[0].plot(humid4)
-                        axs[0].set_ylabel('humidity(%)')
-                        axs[1].plot(tempC4)
-                        axs[1].set_ylabel('Temp(C)')
-                        axs[2].plot(tempF4)
-                        axs[2].set_ylabel('Temp(F)')
-                        axs[2].set_xlabel('Time Passed (Minutes)')
-                        plt.show()
+                        if HumMin4 == None:
+                            print("")
+                        else:
+                            print("current temperature(F), station 4: ", data[11])
+                            tempF4.append(data[11])
+                            print("")
+                            fig,axs = plt.subplots(3)
+                            fig.suptitle('Station 4 Humidity and Temperature')
+                            axs[0].plot(humid4)
+                            axs[0].set_ylabel('humidity(%)')
+                            axs[1].plot(tempC4)
+                            axs[1].set_ylabel('Temp(C)')
+                            axs[2].plot(tempF4)
+                            axs[2].set_ylabel('Temp(F)')
+                            axs[2].set_xlabel('Time Passed (Minutes)')
+                            plt.show()
                     if i == 12:
-                        print("Station 5 soil moisture levels: ")
-                        if data2[4] < 200:
-                            print("Soil is saturated. Do not water and ensure proper drainage.")
-                            GPIO.output(24, True)
-                        elif data2[4] > 200 and data2[4] < 400:
-                            print("Soil is moist. ")
-                            GPIO.output(24, True)
-                        elif data2[4] > 400 and data2[4] < 700:
-                            print("Soil is well watered!")
-                        elif data2[4] > 700 and data2[4] < 900:
-                            print("Soil is dry. Water your plants.")
-                            GPIO.output(23, True)
-                        elif data2[4] > 900:
-                            print("Your plants are under stress due to lack of water.")
-                            print("Please water your plants immediatedly.")
-                            GPIO.output(23, True)
-                        print("current humidity, station 5: ", data[12])
-                        humid5.append(data[12])
+                        if HumMin5 == None:
+                            print("You have planted nothing in station 5.")
+                        else:
+                            print("Station 5 soil moisture levels: ")
+                            if data2[4] < 200:
+                                print("Soil is saturated. Do not water and ensure proper drainage.")
+                                GPIO.output(24, True)
+                            elif data2[4] > 200 and data2[4] < 400:
+                                print("Soil is moist. ")
+                                GPIO.output(24, True)
+                            elif data2[4] > 400 and data2[4] < 700:
+                                print("Soil is well watered!")
+                            elif data2[4] > 700 and data2[4] < 900:
+                                print("Soil is dry. Water your plants.")
+                                GPIO.output(23, True)
+                            elif data2[4] > 900:
+                                print("Your plants are under stress due to lack of water.")
+                                print("Please water your plants immediatedly.")
+                                GPIO.output(23, True)
+                            print("current humidity, station 5: ", data[12])
+                            humid5.append(data[12])
                     if i == 13:
-                        print("current tempearature(C), station 5: ", data[13])
-                        tempC5.append(data[13])
+                        if HumMin5 == None:
+                            print("")
+                        else:
+                            print("current tempearature(C), station 5: ", data[13])
+                            tempC5.append(data[13])
                     if i == 14:
-                        print("current temperature(F), station 5: ", data[14])
-                        tempF5.append(data[14])
-                        print("")
-                        fig,axs = plt.subplots(3)
-                        fig.suptitle('Station 5 Humidity and Temperature')
-                        axs[0].plot(humid5)
-                        axs[0].set_ylabel('humidity(%)')
-                        axs[1].plot(tempC5)
-                        axs[1].set_ylabel('Temp(C)')
-                        axs[2].plot(tempF5)
-                        axs[2].set_ylabel('Temp(F)')
-                        axs[2].set_xlabel('Time Passed (Minutes)')
-                        plt.show()
+                        if HumMin5 == None:
+                            print("")
+                        else:
+                            print("current temperature(F), station 5: ", data[14])
+                            tempF5.append(data[14])
+                            print("")
+                            fig,axs = plt.subplots(3)
+                            fig.suptitle('Station 5 Humidity and Temperature')
+                            axs[0].plot(humid5)
+                            axs[0].set_ylabel('humidity(%)')
+                            axs[1].plot(tempC5)
+                            axs[1].set_ylabel('Temp(C)')
+                            axs[2].plot(tempF5)
+                            axs[2].set_ylabel('Temp(F)')
+                            axs[2].set_xlabel('Time Passed (Minutes)')
+                            plt.show()
                     if i == 15:
+                        print("CAUTION: These are values calculated from all stations, including stations you may not be using.")
                         print("current humidity, average: ", data[15])
                         humidav.append(data[15])
                     if i == 16:
@@ -874,7 +920,7 @@ def helpfulPlanner():
                         
                         
                         print("WARNINGS:")
-                        try: 
+                        try:
                             if data[0] < HumMin1:
                                     print("")
                                     print("Low Humidity levels detected at station 1. This can cause yellowing and drying of leaves or wilting.")
@@ -900,8 +946,7 @@ def helpfulPlanner():
                                     print("Recommended temperature for ",data1[0]," is over ",TempMin1," C (",TempMinF1," F) and under ",TempMax1," C (", TempMaxF1,") F")
                                     GPIO.output(12, True)
                                     print("")
-                        except TypeError: #This added as a null value, if the user selects option 7, would cause the system to error.
-                                          #future work includes creating a system that won't track data at all if nothing is planted at a station.
+                        except TypeError:
                                 print("You have planted nothing at station 1.")
                         try:      
                             if data[3] < HumMin2:
@@ -1190,7 +1235,7 @@ def readArduinoPea():
                     if i == 2:
                         print("current temperature(F), station 1: ",data[2])
                         tempF1.append(data[2])
-                        fig,axs = plt.subplots(2)
+                        fig,axs = plt.subplots(3)
                         fig.suptitle('Station 1 Humidity and Temperature')
                         axs[0].plot(humid1)
                         axs[0].set_ylabel('humidity(%)')
@@ -3339,10 +3384,10 @@ def readArduinoOther():
         plant = input("")
         print("What is the minimum accepted temperature, in Celcius?")
         ThMin = float(input(""))
-        ThMinF = ThMin*(9/5)-32
+        ThMinF = ThMin*(9/5)+32
         print("What is the maximum accepted temperature, in Celcius?")
         ThMax = float(input(""))
-        ThMaxF = ThMax*(9/5)-32
+        ThMaxF = ThMax*(9/5)+32
         print("What is the minimum accepted humidity? Recommended for most plants is 40%.")
         HumMin = float(input(""))
         print("What is the maximum accepted humidity? Recommended for most plants is 60%.")
@@ -3423,7 +3468,7 @@ def readArduinoOther():
             if GPIO.input(4):
                 GPIO.output(4, False)
             i = 0
-            print("Iterartion ", count, " out of ",user)
+            print("Iteration ", count, " out of ",user)
             while i <= 17:
                 
                 if i == 0:
@@ -3622,7 +3667,8 @@ def readArduinoOther():
                     axs[2].plot(tempFav)
                     axs[2].set_ylabel('Temp(F)')
                     axs[2].set_xlabel('Time Passed (Minutes)')
-                
+                    plt.show()
+                    
                     print("WARNINGS:")
                     
                     if data[0] < HumMin:
@@ -3716,13 +3762,13 @@ def readArduinoOther():
                             GPIO.output(27, True)
                             print("")
                     
-                    if data[11] < ThMin:
+                    if data[10] < ThMin:
                             print("")
                             print("Temperature at station 4 is too cold.")
                             print("Recommended temperature for ",plant," is over ",ThMin," C (",ThMinF," F) and under ",ThMax," C (", ThMaxF,") F")
                             GPIO.output(22, True)
                             print("")
-                    if data[11] > ThMax:
+                    if data[10] > ThMax:
                             print("")
                             print("Temperature at station 4 is too warm.")
                             print("Recommended temperature for ",plant," is over ",ThMin," C (",ThMinF," F) and under ",ThMax," C (", ThMaxF,") F")
@@ -3730,26 +3776,26 @@ def readArduinoOther():
                             print("")
                 
                 
-                    if data[13] < HumMin:
+                    if data[12] < HumMin:
                             print("")
                             print("Low Humidity levels detected at station 5. This can cause yellowing and drying of leaves or wilting.")
                             print("Try misting your plants or adding a humidifier.")
                             GPIO.output(17, True)
                             print("")
-                    if data[13] > HumMax:
+                    if data[12] > HumMax:
                             print("")
                             print("High humidity levels detected at station 5. This can cause mold or rot to grow on your plants.")
                             print("Try adding a dehumidifier in the area.")
                             GPIO.output(4, True)
                             print("")
                     
-                    if data[14] < ThMin:
+                    if data[13] < ThMin:
                             print("")
                             print("Temperature at station 5 is too cold.")
                             print("Recommended temperature for ",plant," is over ",ThMin," C (",ThMinF," F) and under ",ThMax," C (", ThMaxF,") F")
                             GPIO.output(17, True)
                             print("")
-                    if data[14] > ThMax:
+                    if data[13] > ThMax:
                             print("")
                             print("Temperature at station 5 is too warm.")
                             print("Recommended temperature for ",plant," is over ",ThMin," C (",ThMinF," F) and under ",ThMax," C (", ThMaxF,") F")
@@ -3802,36 +3848,24 @@ def tomato():
     print("Recommended temperature: between 18.3 and 29.4 C (65 and 85F). ")
     print("Recommended Humidity: between 40 and 60 percent.")
     readArduinoTomato()
-    arduino.close()
-    arduino2.close()
 def bean():
     print("Recommended temperature: between 21 and 29.4 C (70 and 85F). ")
     print("Recommended Humidity: between 40 and 60 percent.")
     readArduinoBean()
-    arduino.close()
-    arduino2.close()
 def pea():
     print("Recommended temperature: between 7 and 21 C (45 and 70F). ")
     print("Recommended Humidity: between 40 and 60 percent.")
     readArduinoPea()
-    arduino.close()
-    arduino2.close()
 def corn():
     print("Recommended temperature: between 25 and 32.8 C (77 and 91F). ")
     print("Recommended Humidity: between 40 and 60 percent.")
     readArduinoCorn()
-    arduino.close()
-    arduino2.close()
 def squash():
     print("Recommended temperature: between 15.6C and 24C (60F and 75F). ")
     print("Recommended Humidity: between 40 and 60 percent.")
     readArduinoSquash()
-    arduino.close()
-    arduino2.close()
 def other():
     readArduinoOther()
-    arduino.close()
-    arduino2.close()
     
 '''
 Method: singlePlanner().
