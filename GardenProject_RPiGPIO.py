@@ -1060,13 +1060,13 @@ def helpfulPlanner():
                             if data[14] < TempMin5:
                                     print("")
                                     print("Temperature at station 5 is too cold.")
-                                    print("Recommended temperature for ",data[4]," is over ",TempMin5," C (",TempMinF5," F) and under ",TempMax5," C (", TempMaxF5,") F")
+                                    print("Recommended temperature for ",data1[4]," is over ",TempMin5," C (",TempMinF5," F) and under ",TempMax5," C (", TempMaxF5,") F")
                                     GPIO.output(17, True)
                                     print("")
                             if data[14] > TempMax5:
                                     print("")
                                     print("Temperature at station 5 is too warm.")
-                                    print("Recommended temperature for ",data[4]," is over ",TempMin5," C (",TempMinF5," F) and under ",TempMax5," C (", TempMaxF5,") F")
+                                    print("Recommended temperature for ",data1[4]," is over ",TempMin5," C (",TempMinF5," F) and under ",TempMax5," C (", TempMaxF5,") F")
                                     GPIO.output(4, True)
                                     print("")
                         except TypeError:
@@ -3945,5 +3945,8 @@ def main():
     else:
         print("Please select yes, no, or quit.")
         
+'''
+while True calls the main() function, and the rest of the program will run until a sys.exit() command is reached.
+'''
 while True:
     main()
