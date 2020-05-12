@@ -3853,7 +3853,7 @@ def singlePlanner():
     print("4) Corn")
     print("5) Squash")
     print("6) Other")
-    print("Type 'q' to quit)
+    print("Type 'q' to quit.")
     userVeggie = input("")
     if userVeggie in ['1)','1','Tomatoes','tomatoes']:
         print("Recommended temperature: between 18.3 and 29.4 C (65 and 85F). ")
