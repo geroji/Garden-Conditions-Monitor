@@ -628,13 +628,11 @@ def helpfulPlanner():
             data = []
             for y in range(0,18): 
                 data.append(float(arduino.readline()))
-                
-            p = 0
+
             data2 = []
             for y2 in range(0,5): 
                 data2.append(float(arduino2.readline()))
-                p += 1
-             
+
             if GPIO.input(21):
                 GPIO.output(21, False)
             if GPIO.input(20):
@@ -1162,11 +1160,9 @@ def readArduinoPea():
             for y in range(0,18): 
                 data.append(float(arduino.readline()))
                 
-            p = 0
             data2 = []
             for y2 in range(0,5): 
                 data2.append(float(arduino2.readline()))
-                p += 1
             
             i = 0
             print("Iteration ", count, " out of ",user)
@@ -2069,12 +2065,11 @@ def readArduinoSquash():
             data = []
             for y in range(0,18): 
                 data.append(float(arduino.readline()))
-                
-            p = 0
+
             data2 = []
             for y2 in range(0,5): 
                 data2.append(float(arduino2.readline()))
-                p += 1
+
             if GPIO.input(12):
                 GPIO.output(12, False)
             if GPIO.input(16):
@@ -2521,11 +2516,9 @@ def readArduinoTomato():
             for y in range(0,18): 
                 data.append(float(arduino.readline()))
                 
-            p = 0
             data2 = []
             for y2 in range(0,5): 
                 data2.append(float(arduino2.readline()))
-                p += 1
             
             if GPIO.input(21):
                 GPIO.output(21, False)
@@ -2968,11 +2961,10 @@ def readArduinoCorn():
             for y in range(0,18): 
                 data.append(float(arduino.readline()))
                 
-            p = 0
             data2 = []
             for y2 in range(0,5): 
                 data2.append(float(arduino2.readline()))
-                p += 1
+
             if GPIO.input(12):
                 GPIO.output(12, False)
             if GPIO.input(16):
@@ -3427,12 +3419,10 @@ def readArduinoOther():
             data = []
             for y in range(0,18): 
                 data.append(float(arduino.readline()))
-                
-            p = 0
+
             data2 = []
             for y2 in range(0,5): 
                 data2.append(float(arduino2.readline()))
-                p += 1
             
             if GPIO.input(21):
                 GPIO.output(21, False)
