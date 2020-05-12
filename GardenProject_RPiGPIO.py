@@ -22,7 +22,7 @@ is too high or low, or if the soil is too dry or wet. This code DOES NOT run fro
 two arduinos, unless the RPi.GPIO library is installed for some reason. Comment out the RPi library and any GPIO mentions 
 within the program and the program should run fine and interpret/plot data from your laptop.
 
-Known bugs: Not that I am aware of, though I won't promise there aren't any.
+Known bugs: Not that I am aware of, I tested this program multiple times and caught I believe most. I won't promise there aren't any.
 '''
 import RPi.GPIO as GPIO #For LED signals
 import sys #Used for sys.exit()
@@ -138,11 +138,11 @@ def helpfulPlanner():
     if userVeg1 in ['1)','1','Tomatoes','tomatoes']:
         data1.append("Tomatoes")
         print("Recommended temperature: between 18.3 and 29.4 C (65 and 85F). ")
-        print("Recommended Humidity: between 40 and 60 percent.")
+        print("Recommended Humidity: between 40 and 80 percent.")
     elif userVeg1 in ['2','2)','Beans','beans']:
         data1.append("Beans")
         print("Recommended temperature: between 21 and 29.4 C (70 and 85F). ")
-        print("Recommended Humidity: between 40 and 60 percent.")
+        print("Recommended Humidity: between 40 and 80 percent.")
     elif userVeg1 in ['3','3)','Peas','peas']:
         data1.append("Peas")
         print("Recommended temperature: between 7 and 21 C (45 and 70F). ")
@@ -150,7 +150,7 @@ def helpfulPlanner():
     elif userVeg1 in ['4','4)','Corn','corn']:
         data1.append("Corn")
         print("Recommended temperature: between 25 and 32.8 C (77 and 91F). ")
-        print("Recommended Humidity: between 40 and 60 percent.")
+        print("Recommended Humidity: between 40 and 80 percent.")
     elif userVeg1 in ['5','5)','Squash','squash']:
         data1.append("Squash")
         print("Recommended temperature: between 15.6C and 24C (60F and 75F). ")
@@ -184,11 +184,11 @@ def helpfulPlanner():
     if userVeg2 in ['1)','1','Tomatoes','tomatoes']:
         data1.append("Tomatoes")
         print("Recommended temperature: between 18.3 and 29.4 C (65 and 85F). ")
-        print("Recommended Humidity: between 40 and 60 percent.")
+        print("Recommended Humidity: between 40 and 80 percent.")
     elif userVeg2 in ['2','2)','Beans','beans']:
         data1.append("Beans")
         print("Recommended temperature: between 21 and 29.4 C (70 and 85F). ")
-        print("Recommended Humidity: between 40 and 60 percent.")
+        print("Recommended Humidity: between 40 and 80 percent.")
     elif userVeg2 in ['3','3)','Peas','peas']:
         data1.append("Peas")
         print("Recommended temperature: between 7 and 21 C (45 and 70F). ")
@@ -196,7 +196,7 @@ def helpfulPlanner():
     elif userVeg2 in ['4','4)','Corn','corn']:
         data1.append("Corn")
         print("Recommended temperature: between 25 and 32.8 C (77 and 91F). ")
-        print("Recommended Humidity: between 40 and 60 percent.")
+        print("Recommended Humidity: between 40 and 80 percent.")
     elif userVeg2 in ['5','5)','Squash','squash']:
         data1.append("Squash")
         print("Recommended temperature: between 15.6C and 24C (60F and 75F). ")
@@ -230,11 +230,11 @@ def helpfulPlanner():
     if userVeg3 in ['1)','1','Tomatoes','tomatoes']:
         data1.append("Tomatoes")
         print("Recommended temperature: between 18.3 and 29.4 C (65 and 85F). ")
-        print("Recommended Humidity: between 40 and 60 percent.")
+        print("Recommended Humidity: between 40 and 80 percent.")
     elif userVeg3 in ['2','2)','Beans','beans']:
         data1.append("Beans")
         print("Recommended temperature: between 21 and 29.4 C (70 and 85F). ")
-        print("Recommended Humidity: between 40 and 60 percent.")
+        print("Recommended Humidity: between 40 and 80 percent.")
     elif userVeg3 in ['3','3)','Peas','peas']:
         data1.append("Peas")
         print("Recommended temperature: between 7 and 21 C (45 and 70F). ")
@@ -242,7 +242,7 @@ def helpfulPlanner():
     elif userVeg3 in ['4','4)','Corn','corn']:
         data1.append("Corn")
         print("Recommended temperature: between 25 and 32.8 C (77 and 91F). ")
-        print("Recommended Humidity: between 40 and 60 percent.")
+        print("Recommended Humidity: between 40 and 80 percent.")
     elif userVeg3 in ['5','5)','Squash','squash']:
         data1.append("Squash")
         print("Recommended temperature: between 15.6C and 24C (60F and 75F). ")
@@ -276,11 +276,11 @@ def helpfulPlanner():
     if userVeg4 in ['1)','1','Tomatoes','tomatoes']:
         data1.append("Tomatoes")
         print("Recommended temperature: between 18.3 and 29.4 C (65 and 85F). ")
-        print("Recommended Humidity: between 40 and 60 percent.")
+        print("Recommended Humidity: between 40 and 80 percent.")
     elif userVeg4 in ['2','2)','Beans','beans']:
         data1.append("Beans")
         print("Recommended temperature: between 21 and 29.4 C (70 and 85F). ")
-        print("Recommended Humidity: between 40 and 60 percent.")
+        print("Recommended Humidity: between 40 and 80 percent.")
     elif userVeg4 in ['3','3)','Peas','peas']:
         data1.append("Peas")
         print("Recommended temperature: between 7 and 21 C (45 and 70F). ")
@@ -288,7 +288,7 @@ def helpfulPlanner():
     elif userVeg4 in ['4','4)','Corn','corn']:
         data1.append("Corn")
         print("Recommended temperature: between 25 and 32.8 C (77 and 91F). ")
-        print("Recommended Humidity: between 40 and 60 percent.")
+        print("Recommended Humidity: between 40 and 80 percent.")
     elif userVeg4 in ['5','5)','Squash','squash']:
         data1.append("Squash")
         print("Recommended temperature: between 15.6C and 24C (60F and 75F). ")
@@ -322,11 +322,11 @@ def helpfulPlanner():
     if userVeg5 in ['1)','1','Tomatoes','tomatoes']:
         data1.append("Tomatoes")
         print("Recommended temperature: between 18.3 and 29.4 C (65 and 85F). ")
-        print("Recommended Humidity: between 40 and 60 percent.")
+        print("Recommended Humidity: between 40 and 80 percent.")
     elif userVeg5 in ['2','2)','Beans','beans']:
         data1.append("Beans")
         print("Recommended temperature: between 21 and 29.4 C (70 and 85F). ")
-        print("Recommended Humidity: between 40 and 60 percent.")
+        print("Recommended Humidity: between 40 and 80 percent.")
     elif userVeg5 in ['3','3)','Peas','peas']:
         data1.append("Peas")
         print("Recommended temperature: between 7 and 21 C (45 and 70F). ")
@@ -334,7 +334,7 @@ def helpfulPlanner():
     elif userVeg5 in ['4','4)','Corn','corn']:
         data1.append("Corn")
         print("Recommended temperature: between 25 and 32.8 C (77 and 91F). ")
-        print("Recommended Humidity: between 40 and 60 percent.")
+        print("Recommended Humidity: between 40 and 80 percent.")
     elif userVeg5 in ['5','5)','Squash','squash']:
         data1.append("Squash")
         print("Recommended temperature: between 15.6C and 24C (60F and 75F). ")
@@ -380,21 +380,21 @@ def helpfulPlanner():
         
     if data1[0] in ['Tomatoes']:
         HumMin1 = 40
-        HumMax1 = 60
+        HumMax1 = 80
         TempMin1 = 18.3
         TempMinF1 = TempMin1*(9/5)+32
         TempMax1 = 29.4
         TempMaxF1 = TempMax1*(9/5)+32
     elif data1[0] in ['Beans']:
         HumMin1 = 40
-        HumMax1 = 60
+        HumMax1 = 80
         TempMin1 = 21 
         TempMinF1 = TempMin1*(9/5)+32
         TempMax1 = 29.4
         TempMaxF1 = TempMax1*(9/5)+32
     elif data1[0] in ['Corn']:
         HumMin1 = 40
-        HumMax1 = 60
+        HumMax1 = 80
         TempMin1 = 25
         TempMinF1 = TempMin1*(9/5)+32
         TempMax1 = 32.8
@@ -423,21 +423,21 @@ def helpfulPlanner():
         
     if data1[1] in ['Tomatoes']:
         HumMin2 = 40
-        HumMax2 = 60
+        HumMax2 = 80
         TempMin2 = 18.3
         TempMinF2 = TempMin2*(9/5)+32
         TempMax2 = 29.4
         TempMaxF2 = TempMax2*(9/5)+32
     elif data1[1] in ['Beans']:
         HumMin2 = 40
-        HumMax2 = 60
+        HumMax2 = 80
         TempMin2 = 21
         TempMinF2 = TempMin2*(9/5)+32
         TempMax2 = 29.4
         TempMaxF2 = TempMax2*(9/5)+32
     elif data1[1] in ['Corn']:
         HumMin2 = 40
-        HumMax2 = 60
+        HumMax2 = 80
         TempMin2 = 25
         TempMinF2 = TempMin2*(9/5)+32
         TempMax2 = 32.8
@@ -466,21 +466,21 @@ def helpfulPlanner():
         
     if data1[2] in ['Tomatoes']:
         HumMin3 = 40
-        HumMax3 = 60
+        HumMax3 = 80
         TempMin3 = 18.3
         TempMinF3 = TempMin3*(9/5)+32
         TempMax3 = 29.4
         TempMaxF3 = TempMax3*(9/5)+32
     elif data1[2] in ['Beans']:
         HumMin3 = 40
-        HumMax3 = 60
+        HumMax3 = 80
         TempMin3 = 21
         TempMinF3 = TempMin3*(9/5)+32
         TempMax3 = 29.4
         TempMaxF3 = TempMax3*(9/5)+32
     elif data1[2] in ['Corn']:
         HumMin3 = 40
-        HumMax3 = 60
+        HumMax3 = 80
         TempMin3 = 25
         TempMinF3 = TempMin3*(9/5)+32
         TempMax3 = 32.8
@@ -509,21 +509,21 @@ def helpfulPlanner():
         
     if data1[3] in ['Tomatoes']:
         HumMin4 = 40
-        HumMax4 = 60
+        HumMax4 = 80
         TempMin4 = 18.3
         TempMinF4 = TempMin4*(9/5)+32
         TempMax4 = 29.4
         TempMaxF4 = TempMax4*(9/5)+32
     elif data1[3] in ['Beans']:
         HumMin4 = 40
-        HumMax4 = 60
+        HumMax4 = 80
         TempMin4 = 21
         TempMinF4 = TempMin4*(9/5)+32
         TempMax4 = 29.4
         TempMaxF4 = TempMax4*(9/5)+32
     elif data1[3] in ['Corn']:
         HumMin4 = 40
-        HumMax4 = 60
+        HumMax4 = 80
         TempMin4 = 25
         TempMinF4 = TempMin4*(9/5)+32
         TempMax4 = 32.8
@@ -552,21 +552,21 @@ def helpfulPlanner():
         
     if data1[4] in ['Tomatoes']:
         HumMin5 = 40
-        HumMax5 = 60
+        HumMax5 = 80
         TempMin5 = 18.3
         TempMinF5 = TempMin5*(9/5)+32
         TempMax5 = 29.4
         TempMaxF5 = TempMax5*(9/5)+32
     elif data1[4] in ['Beans']:
         HumMin5 = 40
-        HumMax5 = 60
+        HumMax5 = 80
         TempMin5 = 21
         TempMinF5 = TempMin5*(9/5)+32
         TempMax5 = 29.4
         TempMaxF5 = TempMax5*(9/5)+32
     elif data1[4] in ['Corn']:
         HumMin5 = 40
-        HumMax5 = 60
+        HumMax5 = 80
         TempMin5 = 25
         TempMinF5 = TempMin5*(9/5)+32
         TempMax5 = 32.8
@@ -1882,7 +1882,7 @@ def readArduinoBean():
                                 print("Try misting your plants or adding a humidifier.")
                                 GPIO.output(16, True)
                                 print("")
-                        if data[0] > 60:
+                        if data[0] > 80:
                                 print("")
                                 print("High humidity levels detected at station 1. This can cause mold or rot to grow on your plants.")
                                 print("Try adding a dehumidifier in the area.")
@@ -1908,7 +1908,7 @@ def readArduinoBean():
                                 print("Try misting your plants or adding a humidifier.")
                                 GPIO.output(26, True)
                                 print("")
-                        if data[3] > 60:
+                        if data[3] > 80:
                                 print("")
                                 print("High humidity levels detected at station 2. This can cause mold or rot to grow on your plants.")
                                 print("Try adding a dehumidifier in the area.")
@@ -1934,7 +1934,7 @@ def readArduinoBean():
                                 print("Try misting your plants or adding a humidifier.")
                                 GPIO.output(6, True)
                                 print("")
-                        if data[6] > 60:
+                        if data[6] > 80:
                                 print("")
                                 print("High humidity levels detected at station 3. This can cause mold or rot to grow on your plants.")
                                 print("Try adding a dehumidifier in the area.")
@@ -1960,7 +1960,7 @@ def readArduinoBean():
                             print("Try misting your plants or adding a humidifier.")
                             GPIO.output(22, True)
                             print("")
-                        if data[9] > 60:
+                        if data[9] > 80:
                             print("")
                             print("High humidity levels detected at station 4. This can cause mold or rot to grow on your plants.")
                             print("Try adding a dehumidifier in the area.")
@@ -1987,7 +1987,7 @@ def readArduinoBean():
                             print("Try misting your plants or adding a humidifier.")
                             GPIO.output(17, True)
                             print("")
-                        if data[12] > 60:
+                        if data[12] > 80:
                             print("")
                             print("High humidity levels detected at station 5. This can cause mold or rot to grow on your plants.")
                             print("Try adding a dehumidifier in the area.")
@@ -2013,7 +2013,7 @@ def readArduinoBean():
                             print("check your stations for low humidity levels.")
                             print("Try misting your plants or adding a humidifier.")
                             print("")
-                        if data[15] > 60:
+                        if data[15] > 80:
                             print("")
                             print("High humidity levels detected. This can cause mold or rot to grow on your plants.")
                             print("check your stations for high humidity levels.")
@@ -2781,7 +2781,7 @@ def readArduinoTomato():
                                 print("Try misting your plants or adding a humidifier.")
                                 GPIO.output(16,True)
                                 print("")
-                        if data[0] > 60:
+                        if data[0] > 80:
                                 print("")
                                 print("High humidity levels detected at station 1. This can cause mold or rot to grow on your plants.")
                                 print("Try adding a dehumidifier in the area.")
@@ -2807,7 +2807,7 @@ def readArduinoTomato():
                                 print("Try misting your plants or adding a humidifier.")
                                 GPIO.output(26,True)
                                 print("")
-                        if data[3] > 60:
+                        if data[3] > 80:
                                 print("")
                                 print("High humidity levels detected at station 2. This can cause mold or rot to grow on your plants.")
                                 print("Try adding a dehumidifier in the area.")
@@ -2833,7 +2833,7 @@ def readArduinoTomato():
                                 print("Try misting your plants or adding a humidifier.")
                                 GPIO.output(6,True)
                                 print("")
-                        if data[6] > 60:
+                        if data[6] > 80:
                                 print("")
                                 print("High humidity levels detected at station 3. This can cause mold or rot to grow on your plants.")
                                 print("Try adding a dehumidifier in the area.")
@@ -2859,7 +2859,7 @@ def readArduinoTomato():
                                 print("Try misting your plants or adding a humidifier.")
                                 GPIO.output(22,True)
                                 print("")
-                        if data[9] > 60:
+                        if data[9] > 80:
                                 print("")
                                 print("High humidity levels detected at station 4. This can cause mold or rot to grow on your plants.")
                                 print("Try adding a dehumidifier in the area.")
@@ -2885,7 +2885,7 @@ def readArduinoTomato():
                                 print("Try misting your plants or adding a humidifier.")
                                 GPIO.output(17,True)
                                 print("")
-                        if data[12] > 60:
+                        if data[12] > 80:
                                 print("")
                                 print("High humidity levels detected at station 5. This can cause mold or rot to grow on your plants.")
                                 print("Try adding a dehumidifier in the area.")
@@ -2911,7 +2911,7 @@ def readArduinoTomato():
                                 print("check your stations for low humidity levels.")
                                 print("Try misting your plants or adding a humidifier.")
                                 print("")
-                        if data[15] > 60:
+                        if data[15] > 80:
                                 print("")
                                 print("High humidity levels detected. This can cause mold or rot to grow on your plants.")
                                 print("check your stations for high humidity levels.")
@@ -3228,7 +3228,7 @@ def readArduinoCorn():
                                 print("Try misting your plants or adding a humidifier.")
                                 GPIO.output(16, True)
                                 print("")
-                        if data[0] > 60:
+                        if data[0] > 80:
                                 print("")
                                 print("High humidity levels detected at station 1. This can cause mold or rot to grow on your plants.")
                                 print("Try adding a dehumidifier in the area.")
@@ -3254,7 +3254,7 @@ def readArduinoCorn():
                                 print("Try misting your plants or adding a humidifier.")
                                 GPIO.output(26, True)
                                 print("")
-                        if data[3] > 60:
+                        if data[3] > 80:
                                 print("")
                                 print("High humidity levels detected at station 2. This can cause mold or rot to grow on your plants.")
                                 print("Try adding a dehumidifier in the area.")
@@ -3280,7 +3280,7 @@ def readArduinoCorn():
                                 print("Try misting your plants or adding a humidifier.")
                                 GPIO.output(6, True)
                                 print("")
-                        if data[6] > 60:
+                        if data[6] > 80:
                                 print("")
                                 print("High humidity levels detected at station 3. This can cause mold or rot to grow on your plants.")
                                 print("Try adding a dehumidifier in the area.")
@@ -3306,7 +3306,7 @@ def readArduinoCorn():
                                 print("Try misting your plants or adding a humidifier.")
                                 GPIO.output(22, True)
                                 print("")
-                        if data[9] > 60:
+                        if data[9] > 80:
                                 print("")
                                 print("High humidity levels detected at station 4. This can cause mold or rot to grow on your plants.")
                                 print("Try adding a dehumidifier in the area.")
@@ -3333,7 +3333,7 @@ def readArduinoCorn():
                                 print("Try misting your plants or adding a humidifier.")
                                 GPIO.output(17, True)
                                 print("")
-                        if data[12] > 60:
+                        if data[12] > 80:
                                 print("")
                                 print("High humidity levels detected at station 5. This can cause mold or rot to grow on your plants.")
                                 print("Try adding a dehumidifier in the area.")
@@ -3359,7 +3359,7 @@ def readArduinoCorn():
                                 print("check your stations for low humidity levels.")
                                 print("Try misting your plants or adding a humidifier.")
                                 print("")
-                        if data[15] > 60:
+                        if data[15] > 80:
                                 print("")
                                 print("High humidity levels detected. This can cause mold or rot to grow on your plants.")
                                 print("check your stations for high humidity levels.")
@@ -3842,39 +3842,6 @@ def readArduinoOther():
     except ValueError:
         print("invalid input.")
         readArduinoOther()
-        
-'''
-Methods tomato(),bean(),pea(),corn(),squash(), and other()
-Author: Jacob Gero 
-
-These methods are the options from the above single planner. Each method prints to the
-user recommended parameters for each vegetable and what is an acceptable temperature
-and humidity for each.
-
-'''
-def tomato():
-    print("Recommended temperature: between 18.3 and 29.4 C (65 and 85F). ")
-    print("Recommended Humidity: between 40 and 60 percent.")
-    readArduinoTomato()
-def bean():
-    print("Recommended temperature: between 21 and 29.4 C (70 and 85F). ")
-    print("Recommended Humidity: between 40 and 60 percent.")
-    readArduinoBean()
-def pea():
-    print("Recommended temperature: between 7 and 21 C (45 and 70F). ")
-    print("Recommended Humidity: between 40 and 60 percent.")
-    readArduinoPea()
-def corn():
-    print("Recommended temperature: between 25 and 32.8 C (77 and 91F). ")
-    print("Recommended Humidity: between 40 and 60 percent.")
-    readArduinoCorn()
-def squash():
-    print("Recommended temperature: between 15.6C and 24C (60F and 75F). ")
-    print("Recommended Humidity: between 40 and 60 percent.")
-    readArduinoSquash()
-def other():
-    readArduinoOther()
-    
 '''
 Method: singlePlanner().
 Author: Jacob Gero
@@ -3883,6 +3850,10 @@ This method runs if the user elects to plant only one plant in the garden. It li
 the user can enter, and if parameters are too high or low the program will send a method and a light signal
 at the beginning of every iteration.
 
+When the user selects a vegetable, the code will run the method with the accompanying vegetable. If an incorrect
+value is used, the program will reject it and rerun until a correct value is reached.
+
+Edit, 08 May 2020: I added a new feature that allows the user to quit the program. This has not been tested, but should work.
 '''
 def singlePlanner(): 
     print("Hello! What are you planting today?")
@@ -3892,28 +3863,41 @@ def singlePlanner():
     print("4) Corn")
     print("5) Squash")
     print("6) Other")
+    print("Type 'q' to quit)
     userVeggie = input("")
     if userVeggie in ['1)','1','Tomatoes','tomatoes']:
-        tomato()
+        print("Recommended temperature: between 18.3 and 29.4 C (65 and 85F). ")
+        print("Recommended Humidity: between 40 and 80 percent.")
+        readArduinoTomato()
         q()
     elif userVeggie in ['2','2)','Beans','beans']:
-        bean()
+        print("Recommended temperature: between 21 and 29.4 C (70 and 85F). ")
+        print("Recommended Humidity: between 40 and 80 percent.")
+        readArduinoBean()
         q()
     elif userVeggie in ['3','3)','Peas','peas']:
-        pea()
+        print("Recommended temperature: between 7 and 21 C (45 and 70F). ")
+        print("Recommended Humidity: between 40 and 60 percent.")
+        readArduinoPea()
         q()
     elif userVeggie in ['4','4)','Corn','corn']:
-        corn()
+        print("Recommended temperature: between 25 and 32.8 C (77 and 91F). ")
+        print("Recommended Humidity: between 40 and 80 percent.")
+        readArduinoCorn()
         q()
     elif userVeggie in ['5','5)','Squash','squash']:
-        squash()
+        print("Recommended temperature: between 15.6C and 24C (60F and 75F). ")
+        print("Recommended Humidity: between 40 and 60 percent.")
+        readArduinoSquash()
         q()
     elif userVeggie in ['6','6)','Other','other']:
-        other()
+        readArduinoOther()
+        q()
+    elif userVeggie in ['q','Q','quit','Quit']:
         q()
     else:
         print("Please select a vegetable.")
-        q()           
+        singlePlanner()         
 
 '''
 Method: main()
