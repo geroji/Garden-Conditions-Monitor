@@ -76,7 +76,7 @@ Ensure these ports are not confused. Run both Arduino codes at once by opening u
 and opening the two codes in the respective windows. Then you will be able to run the two codes at once from different ports.
 '''
 try:
-    arduino2 = serial.Serial('/dev/ttyACM0',9600) #interprets COM3 port, which connects to the Arduino reading the YL 69 sensors.
+    arduino2 = serial.Serial('/dev/ttyACM0',9600) #interprets second RPi port, which connects to the Arduino reading the YL 69 sensors.
 except serial.SerialException:
     print("No Arduino2. Please check your port and try again.")
     time.sleep(2) #Allows user to read message for two seconds
