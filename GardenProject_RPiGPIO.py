@@ -145,7 +145,7 @@ def helpfulPlanner():
         print("Recommended Humidity: between 40 and 80 percent.")
     elif userVeg1 in ['3','3)','Peas','peas']:
         data1.append("Peas")
-        print("Recommended temperature: between 7 and 21 C (45 and 70F). ")
+        print("Recommended temperature: between 10 and 21 C (50 and 70F). ")
         print("Recommended Humidity: between 40 and 60 percent.")
     elif userVeg1 in ['4','4)','Corn','corn']:
         data1.append("Corn")
@@ -191,7 +191,7 @@ def helpfulPlanner():
         print("Recommended Humidity: between 40 and 80 percent.")
     elif userVeg2 in ['3','3)','Peas','peas']:
         data1.append("Peas")
-        print("Recommended temperature: between 7 and 21 C (45 and 70F). ")
+        print("Recommended temperature: between 10 and 21 C (50 and 70F). ")
         print("Recommended Humidity: between 40 and 60 percent.")
     elif userVeg2 in ['4','4)','Corn','corn']:
         data1.append("Corn")
@@ -237,7 +237,7 @@ def helpfulPlanner():
         print("Recommended Humidity: between 40 and 80 percent.")
     elif userVeg3 in ['3','3)','Peas','peas']:
         data1.append("Peas")
-        print("Recommended temperature: between 7 and 21 C (45 and 70F). ")
+        print("Recommended temperature: between 10 and 21 C (50 and 70F). ")
         print("Recommended Humidity: between 40 and 60 percent.")
     elif userVeg3 in ['4','4)','Corn','corn']:
         data1.append("Corn")
@@ -283,7 +283,7 @@ def helpfulPlanner():
         print("Recommended Humidity: between 40 and 80 percent.")
     elif userVeg4 in ['3','3)','Peas','peas']:
         data1.append("Peas")
-        print("Recommended temperature: between 7 and 21 C (45 and 70F). ")
+        print("Recommended temperature: between 10 and 21 C (50 and 70F). ")
         print("Recommended Humidity: between 40 and 60 percent.")
     elif userVeg4 in ['4','4)','Corn','corn']:
         data1.append("Corn")
@@ -329,7 +329,7 @@ def helpfulPlanner():
         print("Recommended Humidity: between 40 and 80 percent.")
     elif userVeg5 in ['3','3)','Peas','peas']:
         data1.append("Peas")
-        print("Recommended temperature: between 7 and 21 C (45 and 70F). ")
+        print("Recommended temperature: between 10 and 21 C (50 and 70F). ")
         print("Recommended Humidity: between 40 and 60 percent.")
     elif userVeg5 in ['4','4)','Corn','corn']:
         data1.append("Corn")
@@ -409,7 +409,7 @@ def helpfulPlanner():
     elif data1[0] in ['Peas']:
         HumMin1 = 40
         HumMax1 = 60
-        TempMin1 = 7
+        TempMin1 = 10
         TempMinF1 = TempMin1*(9/5)+32
         TempMax1 = 21
         TempMaxF1 = TempMax1*(9/5)+32
@@ -452,7 +452,7 @@ def helpfulPlanner():
     elif data1[1] in ['Peas']:
         HumMin2 = 40
         HumMax2 = 60
-        TempMin2 = 7
+        TempMin2 = 10
         TempMinF2 = TempMin2*(9/5)+32
         TempMax2 = 21
         TempMaxF2 = TempMax2*(9/5)+32
@@ -495,7 +495,7 @@ def helpfulPlanner():
     elif data1[2] in ['Peas']:
         HumMin3 = 40
         HumMax3 = 60
-        TempMin3 = 7
+        TempMin3 = 10
         TempMinF3 = TempMin3*(9/5)+32
         TempMax3 = 21
         TempMaxF3 = TempMax3*(9/5)+32
@@ -538,7 +538,7 @@ def helpfulPlanner():
     elif data1[3] in ['Peas']:
         HumMin4 = 40
         HumMax4 = 60
-        TempMin4 = 7
+        TempMin4 = 10
         TempMinF4 = TempMin4*(9/5)+32
         TempMax4 = 21
         TempMaxF4 = TempMax4*(9/5)+32
@@ -1435,16 +1435,16 @@ def readArduinoPea():
                             GPIO.output(12,True)
                             print("")
                         
-                        if data[1] < 7:
+                        if data[1] < 10:
                             print("")
                             print("Temperature at station 1 is too cold.")
-                            print("Recommended temperature for Peas is over 7C (45F) and under 21C (70F).")
+                            print("Recommended temperature for Peas is over 10C (50F) and under 21C (70F).")
                             GPIO.output(16, True)
                             print("")
                         if data[1] > 21:
                             print("")
                             print("Temperature at station 1 is too warm.")
-                            print("Recommended temperature for Peas is over 7C (45F) and under 21C (70F).")
+                            print("Recommended temperature for Peas is over 10C (50F) and under 21C (70F).")
                             GPIO.output(12,True)
                             print("")
     
@@ -1461,16 +1461,16 @@ def readArduinoPea():
                             GPIO.output(13,True)
                             print("")
                     
-                        if data[4] < 7:
+                        if data[4] < 10:
                             print("")
                             print("Temperature at station 2 is too cold.")
-                            print("Recommended temperature for Peas is over 7C (45F) and under 21C (70F).")
+                            print("Recommended temperature for Peas is over 10C (50F) and under 21C (70F).")
                             GPIO.output(26,True)
                             print("")
                         if data[4] > 21:
                             print("")
                             print("Temperature at station 2 is too warm.")
-                            print("Recommended temperature for Peas is over 7C (45F) and under 21C (70C).")
+                            print("Recommended temperature for Peas is over 10C (50F) and under 21C (70C).")
                             GPIO.output(13,True)
                             print("")
                         
@@ -1487,16 +1487,16 @@ def readArduinoPea():
                             GPIO.output(5,True)
                             print("")
     
-                        if data[7] < 7:
+                        if data[7] < 10:
                             print("")
                             print("Temperature at station 3 is too cold.")
-                            print("Recommended temperature for Peas is over 7C (45F) and under 21C (70F).")
+                            print("Recommended temperature for Peas is over 10C (50F) and under 21C (70F).")
                             GPIO.output(6,True)
                             print("")
                         if data[7] > 21:
                             print("")
                             print("Temperature at station 3 is too warm.")
-                            print("Recommended temperature for Peas is over 7C (45F) and under 21C (70C).")
+                            print("Recommended temperature for Peas is over 10C (50F) and under 21C (70C).")
                             GPIO.output(5,True)
                             print("")
                      
@@ -1516,13 +1516,13 @@ def readArduinoPea():
                         if data[10] < 7:
                             print("")
                             print("Temperature at station 4 is too cold.")
-                            print("Recommended temperature for Peas is over 7C (45F) and under 21C (70F).")
+                            print("Recommended temperature for Peas is over 10C (50F) and under 21C (70F).")
                             GPIO.output(22,True)
                             print("")
                         if data[10] > 21:
                             print("")
                             print("Temperature at station 4 is too warm.")
-                            print("Recommended temperature for Peas is over 7C (45F) and under 21C (70C).")
+                            print("Recommended temperature for Peas is over 10C (50F) and under 21C (70C).")
                             GPIO.output(27,True)
                             print("")
                     
@@ -1540,10 +1540,10 @@ def readArduinoPea():
                             GPIO.output(4,True)
                             print("")
                     
-                        if data[13] < 7:
+                        if data[13] < 10:
                             print("")
                             print("Temperature at station 5 is too cold.")
-                            print("Recommended temperature for Peas is over 7C (45F) and under 21C (70F).")
+                            print("Recommended temperature for Peas is over 10C (50F) and under 21C (70F).")
                             GPIO.output(17, True)
                             print("")
                         
@@ -1551,7 +1551,7 @@ def readArduinoPea():
                         if data[13] > 21:
                             print("")
                             print("Temperature at station 5 is too warm.")
-                            print("Recommended temperature for Peas is over 7C (45F) and under 21C (70C).")
+                            print("Recommended temperature for Peas is over 10C (50F) and under 21C (70C).")
                             GPIO.output(4,True)
                             print("")
         
@@ -1569,16 +1569,16 @@ def readArduinoPea():
                             print("Try adding a dehumidifier in the area.")
                             print("")
     
-                        if data[16] < 7:
+                        if data[16] < 10:
                             print("")
                             print("The average temperature is too cold.")
-                            print("Recommended temperature for Peas is over 7C (45F) and under 21C (70F).")
+                            print("Recommended temperature for Peas is over 10C (50F) and under 21C (70F).")
                             print("Check to see where your growing stations are too cold.")
                             print("")
                         if data[16] > 21:
                             print("")
                             print("Average temperature is too warm.")
-                            print("Recommended temperature for Peas is over 7C (45F) and under 21C (70C).")
+                            print("Recommended temperature for Peas is over 10C (50F) and under 21C (70C).")
                             print("Check to see where your growing stations are too warm.")
                             print("")
   
@@ -1892,7 +1892,7 @@ def readArduinoBean():
                         if data[1] < 21:
                                 print("")
                                 print("Temperature at station 1 is too cold.")
-                                print("Recommended temperature for Beans is over 7C (45F) and under 21C (70F).")
+                                print("Recommended temperature for Beans is over 21C (70F) and under 29.4C (85F).")
                                 GPIO.output(16, True)
                                 print("")
                         if data[1] > 29.4:
@@ -1918,7 +1918,7 @@ def readArduinoBean():
                         if data[4] < 21:
                                 print("")
                                 print("Temperature at station 2 is too cold.")
-                                print("Recommended temperature for Beans is over 7C (45F) and under 21C (70F).")
+                                print("Recommended temperature for Beans is over 21C (70F) and under 29.4C (85F).")
                                 GPIO.output(26, True)
                                 print("")
                         if data[4] > 29.4:
@@ -1944,7 +1944,7 @@ def readArduinoBean():
                         if data[7] < 21:
                                 print("")
                                 print("Temperature at station 3 is too cold.")
-                                print("Recommended temperature for Beans is over 7C (45F) and under 21C (70F).")
+                                print("Recommended temperature for Beans is over 21C (70F) and under 29.4C (85F).")
                                 GPIO.output(6, True)
                                 print("")
                         if data[7] > 29.4:
@@ -3876,7 +3876,7 @@ def singlePlanner():
         readArduinoBean()
         q()
     elif userVeggie in ['3','3)','Peas','peas']:
-        print("Recommended temperature: between 7 and 21 C (45 and 70F). ")
+        print("Recommended temperature: between 10 and 21 C (50 and 70F). ")
         print("Recommended Humidity: between 40 and 60 percent.")
         readArduinoPea()
         q()
